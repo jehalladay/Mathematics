@@ -1,0 +1,521 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools, amsthm}
+\title{How to Use Latex}
+\author{Math 260}
+\date{Spring 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Latex Basics}
+Let's practice with typing some basic math. When we want to type some math in line, we use dollar signs between the math. So, for example, to type the number e raised to the x power in the same line as the text, we can type $e^x$. (Look at code on left to see what I am typing into the Latex code to get this.) If we want this math to be displayed nicely on its own line, we can type $$e^x$$ with two dollar signs around the math. If we are using the package ``amsmath" (which I have included in this document -- see the preamble) we can also type
+\begin{align}
+    e^x
+\end{align}
+or
+\begin{align*}
+    e^x
+\end{align*}
+which has the advantage of being able to line up equations if needed.
+
+Note the environment ``\textbackslash begin\{align\}" and then ``\textbackslash end\{align\}" labels the math expression or equation that we type, whereas if we use ``\textbackslash begin\{align*\}" and then `` \textbackslash end\{align*\}", it displays the math but does not label the expression or equation we type. Here are some other examples of how to type mathematical expressions or equations:
+\begin{align*}
+    y = \frac{x^2}{x+1} + \ln(x^2+1) + \sin(x) + \cos(x)
+\end{align*}
+\begin{align*}
+    \frac{d^2 y}{dx^2} + 2 \frac{dy}{dx} = x^2
+\end{align*}
+\begin{align*}
+    W(y_1, y_2) = \begin{vmatrix}
+    y_1 & y_2 \\
+    y_1' & y_2'
+    \end{vmatrix}
+\end{align*}
+\begin{align*}
+    2x + 3y &= 2 \\
+    4x - 8y &= 3
+\end{align*}
+Note in the last example we aligned two equations using an ``\&" where we wanted the equations to line up and with two backslashes at the end of the first line. If we had wanted to label those two equations, we could type
+\begin{align}
+    2x + 3y &= 2 \label{eqn1} \\
+    4x - 8y &= 3 \label{eqn2}
+\end{align}
+using whatever label we wanted for each equation (here I chose ``eqn1" and ``eqn2"). We can then refer to these equations by typing ``\textbackslash eqref\{eqn1\}" which will look like: \eqref{eqn1}. So we could write something like, ``Let's multiply \eqref{eqn1} by $-2$ and add to \eqref{eqn2} to get the equation $0x -14y = -1$."
+
+Here is an example of how I might type up a solution to solving the initial value problem
+\begin{align*}
+    y'' + y = 0, \quad y(0) = 1, \quad y'(0) = -1
+\end{align*}
+\textbf{Solution:} \quad First we form the characteristic equation $r^2 + 1 = 0$. This implies that $r = \pm i$. Thus, the solution is in the form
+\begin{align*}
+    y(x) &= c_1 e^{ix} + c_2e^{-ix} = A \cos(x) + B \sin(x).
+\end{align*}
+Now note
+\begin{align*}
+    y(0) = 1 \quad \Rightarrow \quad A = 1.
+\end{align*}
+Next, note
+\begin{align*}
+    y'(x) = -A \sin(x) + B \cos(x).
+\end{align*}
+Thus, 
+\begin{align*}
+    y'(0) = -1 \quad \Rightarrow \quad B = -1.
+\end{align*}
+Thus, the solution is
+\begin{align*}
+    y(x) = \cos(x) - \sin(x). \qed
+\end{align*} 
+Here I used the symbol $\qed$ \quad just to indicate that I was finished with the solution. Note I also used ``\textbackslash quad" a lot, which provides a little bit of blank space. The command ``\textbackslash ;" provides a single space and is also used sometimes when you want a single space between two mathematical expressions (for example, I use it before the "dx" inside an integral all the time).
+
+Here is an example of how to type math that uses an integral:
+\begin{align*}
+    & \frac{dy}{dx} = 8x^3 - \sin(x) + e^x \\
+    \Rightarrow \quad & y(x) = \int \left(8x^3 - \sin(x) + e^x\right) \; dx = 2x^4 + \cos(x) + e^x
+\end{align*}
+We can also put limits on an integral like this:
+\begin{align*}
+    \int_a^b f(x) \; dx
+\end{align*}
+Some other useful tips about using Latex are that if you click enter twice, like this.
+
+It starts a new paragraph and automatically indents the next paragraph for you. You can also skip a line or two lines like this: \\ 
+Go to the next line. \\ \\
+Skip two lines. \\ \\
+\section{Try entering some stuff}
+You can try entering some stuff here, just for fun. You have to click "recompile" for the document to load with the new code.
+\newpage
+\section{Homework 6}
+In Homework 6, you will each be given a problem to write up here in this document using LaTeX. Write up your solution for your problem where indicated.
+\\ \\
+\hline 
+\vspace{0.2in}
+1. Lydia's problem: Use the method of variation of parameters to find the general solution of
+\begin{align*}
+y'' + 9y = 9 \sec^2(3x), \quad 0 < x < \frac{\pi}{6}
+\end{align*}
+You may use the result that $\int \sec(x) \; dx = \ln |\sec(x) + \tan(x)| + C$.\\ \\
+\textbf{Solution:} \\
+First we find the characteristic equation:
+$$r^2+9=0$$
+$$r=\pm3i$$
+so, 
+$y_1=Acos(3x)$  and  $y_2=Bsin(3x)$
+
+Then we use variation of parameters to solve for the general solution. We do this by combining the particular and characteristic solutions. For this method, 
+$$y_p=u_1y_1+u_2y_2$$
+We can find $u'_1$ and $u'_2$ using:
+$u'_1=\frac{-y_2(x)g(x)}{W(y_1,y_2)}$ and $u'_2=\frac{y_1(x)g(x)}{W(y_1,y_2)}$
+$W(y_1,y_2)$ is the wronskian and is equal to $y_1y'_2-y_2y'_1$ so,
+$$W(y_1,y_2)= cos^2(3x)+sin^2(3x)$$
+$$W(y_1,y_2)=1$$
+Plugging this in we get 
+$u'_1=-9Bsin(3x)sec^2(3x)$ 
+which simplifies to 
+$u'_1=-9Btan(3x)sec(3x)$
+We then integrate $u'_1$ to get $u_1$ :
+$$-9B\int sec(3x)tan(3x)$$
+$$u_1=-9Bsec(3x)+C$$ 
+We set C=0 since this is simplest. 
+To get $u'_2$ we plug in the variables:
+$$u'_2=9Acos(3x)sec^2(3x)$$ 
+$$u'_2=9Asec(3x)$$
+$$u_2=9A\int sec(3x)$$
+$$u_2=9Aln|sec(3x)+tan(3x)|+C$$
+Where we set C=0 again for simplicity.
+We now plug in $u_1$ and $u_2$ along with $y_1$ and $y_2$ to our $y_p$ equation.
+$$y_p=-9Bsec(3x)Acos(3x)+Bsin(3x)9Aln|sec(3x)+tan(3x)|$$
+We add this to our characteristic equation to get $y(x)$
+$$y(x)=Acos(3x)+Bsin(3x)-9Bsec(3x)Acos(3x)+Bsin(3x)9Aln|sec(3x)+tan(3x)|$$
+$$y(x)=(A-Dsec(3x))cos(3x)+(E+Fln|sec(3x)+tan(3x)|)sin(3x)$$
+
+
+\hline 
+\vspace{0.2in}
+
+
+2. Jonas' problem: Use the method of variation of parameters to find the general solution of
+\begin{align*}
+y'' + 4y' + 4y = x^{-2} e^{-2x}, \quad x > 0
+\end{align*}
+\textbf{Solution:} 
+\\ \\
+First, let's solve $y'' + 4y' + 4y = 0$.\\
+\noindent Characteristic Equation: $ r^2 + 4r + 4 = 0$\\
+\noindent \quad \Rightarrow $$(r+2)^2=0\\
+\noindent \Rightarrow \ $$r = 2 \\ \\ \\
+
+\noindent Now, we can find $y_1$\ and \ \mathrm $ y_2$. 
+
+
+\noindent $y_1(x) = e^{-2x} \ , \quad y_2(x) = xe^{-2x} $\\  \\ \\
+
+\noindent \mathrm We may now find the particular solution.\\ 
+$y_p(x) = u_1(x)e^{-2x} + u_2(x)xe^{-2x}$ \\ \\ \\
+
+\noindent Now, we will find the Wronskian using \ $y_1, \  y_2, \  y_1', \ 
+\normalfont{and} \ y_2'.\\ \\
+$$W(y_1,y_2) = \begin{vmatrix}
+    e^{-2x} & xe^{-2x} \\
+    -2e^{-x} & -2xe^{-2x} + e^{-2x} 
+    \end{vmatrix}
+= -2xe^{-4x} + e^{-4x} + 2xe^{-4x} = e^-4x \\ \\ \\
+
+\noindent Let's find $ u_1'(x) \\ \\
+$$u_1'(x)= {\Large -\frac {y _2(x)g(x)}{W} = -\frac{xe^{-2x}(x^{-2}e^{-2x})}{e^-4x} = -\frac{1}{x}$$\par}\\ \\ \\
+
+\noindent Let's find u_1(x) \\
+$$u_1(x) =  \int -\frac{1}{x} \mathrm{d}x \; = - ln(x) + C , \quad {set\ C} = 0 $$ 
+\noindent \normalfont{ Since x > 0.}
+\newpage
+
+\noindent Let's find u_2'(x)\\ \\
+\noindent \mathrm u_2'(x)= -\frac {y _1(x)g(x)}{W} =  \frac{ e^{-2x}x^{-2}e^{-2x}}{e^{-4x}} = \frac{1}{x^2} 
+\\ \\ \\
+
+\noindent \normalfont{Let's find  u_2(x)} \\ \\
+$$u_2(x) =  $$\int \frac{1}{x^2} \mathrm{d}x \;
+\\
+%u_2(x) =- \frac{1}{x} + D, \quad \mathrm{set\ D} = 0 \\ \\ \\
+
+\noindent {Now, \ let's \ find \ $y(x)}. \\
+
+$y(x) = y_p(x) + y_c(x) \\ \\
+     = C_1e^{-2x} + C_2xe^{-2x} + ln(x) - \frac{1}{x} \\ \\
+
+
+
+
+
+
+
+
+
+
+\hline 
+\vspace{0.2in}
+3. Logan's problem: Use the method of variation of parameters to find the general solution of
+\begin{align*}
+y'' - y = \cosh(x).
+\end{align*}
+Recall $\ds \cosh(x) = \frac{e^{x} + e^{-x}}{2}$. \\ \\
+\textbf{Solution:} 
+\\ \\
+\hline 
+\vspace{0.2in}
+First solve characteristic equation: $r^2-1=0$
+$$r^2=1$$
+$$r=\pm  1$$
+So we have 
+$$y_1= e^x$$ 
+and,
+$$y_2= e^{-x}$$
+Now that we know that we have both $y_{1}$ and $y_{2}$ we know that, 
+$$y_{c}(x)= C_{1}e^{x}+C_{2}e^{-x}$$
+Now we have to solve for the particular solution using,  
+$$y_{p}(x)= u_{1}(x)e^x+u_{2}(x)e^{-x}$$
+Then we compute the Wronskian 
+W$(y_{1},y_{2})$=
+\begin{vmatrix}
+     e^x & e^{-x} \\
+     e^x & -e^{-x}
+\end{vmatrix}
+=$-e^{x-x}-e^{x-x}$
+\begin{align}
+    which \ simplifies \ to  -2
+\end{align}
+Now that we have that value we can begin solving for $u'_{1}(x)$ and $u'_{2}(x)$
+
+$$u'_{1}= -\frac{y_{2}g(x)}{W}$$
+
+
+$$-\frac{e^{-x}e^{x}+e^{-x}e^{-x}}{-4}$$
+$$-\frac{1+e^{-2x}}{-4}$$
+$$u'_{1}(x)= \frac{1+e^{-2x}}{4}$$
+Now that we found $u'_{1}(x)$ we integrate to find $u_{1}(x)$
+$$u_{1}(x)= \int\frac{1+e^{-2x}}{4}dx$$
+$$u_{1}(x)= \frac{1}{4}x-\frac{1}{8}e^{-2x}+C\hspace{1 in}}  We \ assume \ C=0$$ 
+\vspace{1 mm}
+Now $u'_{2}(x)$,
+$$u'_{2}(x)= \frac{y_{1}g(x)}{W}
+
+
+$$u'_{2}(x)= \frac{e^{x}e^{x}+e^{x}e^{-x}}{-4}$$
+$$u'_{2}(x)= \frac{e^{2x}+1}{-4}$$
+Like before we integrate $u'_{2}(x)$ to find $u_{2}(x)$
+$$u_{2}(x)= \int\frac{e^2{x}+1}{-4}dx$$
+$$u_{2}(x)= -\frac{1}{4}x-\frac{1}{8}e^{2x}+D\hspace{1 in}} We \ assume \ D=0$$
+We sub these found values of $u_{1}$ and $u_{2}$ back in to the equation of $y_{p}(x)$ to find,
+$$y_{p}(x)= (\frac{1}{4}x-\frac{1}{8}e^{-2x})e^{x}+(-\frac{1}{4}x-\frac{1}{8}e^{2x})e^{-x}
+
+$$=\frac{1}{4}xe^{x}-\frac{1}{8}e^{-x}-\frac{1}{4}xe^{-x}-\frac{1}{8}e^{x}}$$
+Now that we have both $y_{p}(x)$ and $y_{c}(x)$, we add them together to finally get the general solution of  $y(x)$ 
+$$y(x)= C_{1}e^{x}+C_{2}e^{-x}+\frac{1}{4}xe^{x}-\frac{1}{8}e^{-x}-\frac{1}{4}xe^{-x}-\frac{1}{8}e^{x}
+
+
+
+
+\hline 
+\vspace{0.2in}
+4. Ryan's problem: Use the method of variation of parameters to find the general solution of
+\begin{align*}
+y'' + y = \tan(x), \quad 0 < x < \frac{\pi}{2}
+\end{align*}
+\textbf{Solution:}
+\\ \\
+Solve Characteristic Equation: $$r^2+1=0$$
+$$r^2=-1$$
+$$r=\pm i$$
+$$y_{c}=Acos(x)+ Bsin(x)$$
+$$\Rightarrow y_{1}=cos(x), y_{2}=sin(x)$$
+$$u_{1}(x)=\frac{-y_{2}g(x)}{w(y_{1},y_{2})}$$
+Then simplify the Wronskian
+ W$(y_{1},y_{2})$ =
+\begin{vmatrix}
+cos(x) & sin(x) \\
+-sin(x) & cos(x)
+\end{vmatrix}
+\begin{align}
+    = 1
+\end{align}
+So $$u_{1}'(x)=\frac{-y_{2}g(x)}{w(y_{1},y_{2})}$$
+$$u_{1}'(x)=\fract{-sin(x)tan(x)}{1}$$
+Then $$u_{1}(x)=\int-sin(x)tan(x)dx$$
+\begin{align}
+    then
+\end{align}
+$$\int-sin(x)*\frac{sin(x)}{cos(x)}dx$$
+$$\int\frac{sin^2(x)}{cos(x)}dx$$
+Rewrite using Trig Identities
+$$\int\frac{1-cos^2(x)}{cos(x)}dx$$
+Splitting the Integral
+$$\int\frac{1}{cos(x)}dx - \int cos(x)dx $$
+Since $\frac{1}{cos(x)}= sec(x)$
+$$\Rightarrow\int sec(x) dx - \int cos(x) dx
+
+
+$$\int sec(x)dx= ln\lvert sec(x)+tan(x) \rvert + C$$
+
+Set C = 0
+
+$$\int sin(x)dx = cos(x) + D$$
+
+Set D = 0
+
+Subtracting the Two Integrals 
+
+$$ln\lvert sec(x)+tan(x) \rvert + sin(x)$$
+
+Then we find u_{2}'(x)
+
+
+$$u_{2}'(x)=\frac{y_{1}(x) g(x)}{W(y_{1},y_{2})}$$
+$$=\frac{cos(x)tan(x)}{1}$$
+
+So
+$$u_{2}(x)=\int cos(x)tan(x) dx$$
+$$=\int cos(x)*\frac{sin(x)}{cos(x)}dx$$
+$$=\int sin(x)dx$$
+
+$$\int sin(x) dx = -cos(x) + D$$
+
+Set D = 0
+
+    $y_{p}$ is assumed to look like
+
+ $$y_{p}=u_{1}(x)y_{1}(x)+u_{2}(x)y_{2}(x)$$
+ $$= cos(x)[ln\lvert sec(x)+tan(x)\rvert + sin(x)]+(-sin(x)cos(x))$$
+ $$= cos(x)ln\lvert sec(x)+tan(x) \rvert+cos(x)sin(x)-cos(x)sin(x)$$
+ $$= cos(x)ln\lvert sec(x)+tan(x) \rvert 
+ 
+ 
+ From above y_{c}(x)= Acos(x) + Bsin(x)
+ 
+$$ y(x)= y_{c}(x)+y_{p}(x)$$
+
+The General Solution is
+
+
+$$y(x) = Acos(x) + Bsin(x) + cos(x)ln\lvert sec(x)+tan(x) \rvert$$
+
+
+
+
+
+
+
+
+
+\vspace{0.5in}
+\hline
+\vspace{0.2in}
+5. James' problem: Use the method of variation of parameters to find the general solution of
+\begin{align*}
+y'' - 4y = \frac{e^{2x}}{x}
+\end{align*}
+\textbf{Solution:}
+\\ \\
+This is a non-homogeneous second-order linear ODE of the form
+\begin{align*}
+ay'' + b y'+ cy = g(x)
+\end{align*}
+where
+\begin{align*}
+a = 1, \quad b = 0, \quad c = -4, \quad and \quad g(x) = \frac{e^{2x}}{x}.
+\end{align*}
+First we find our complementary solution by solving the characteristic equation for $r$, giving us
+\begin{align*}
+r^2-4=0
+\end{align*}
+which we factor to find
+\begin{align*}
+(r+2)(r-2)=0.
+\end{align*}
+Thus we can see that the roots to our characteristic equation are the values
+\begin{align*}
+r = 2 \quad and \quad r = -2.
+\end{align*}
+This gives us the set of solutions
+\begin{align*}
+y_1(x) = e^{2x}, \quad and \quad y_2(x) = e^{-2x}
+\end{align*}
+and the complementary solution
+\begin{align*}
+y_c(x) = Ae^{2x}+Be^{-2x}.
+\end{align*}
+Next we use the method of variation of parameters to find the particular solution which is given by the equation
+\begin{align*}
+y_p(x) = u_1(x)y_1(x)+u_2(x)y_2(x).
+\end{align*}
+We know from the method of variation of parameters that the derivatives of $u_1$ and $u_2$ are given by the equations
+\begin{align*}
+u'_1(x) = \frac{-y_2g(x)}{W(y_1,y_2)} \tag{1}
+\end{align*}
+and
+\begin{align*}
+u'_2(x) = \frac{y_1g(x)}{W(y_1,y_2)} \tag{2}
+\end{align*}
+where the Wronskian, $W(y_1,y_2)$, is given by
+\begin{align*}
+    W(y_1, y_2) = \begin{vmatrix}
+    y_1 & y_2 \\
+    y_1' & y_2'
+    \end{vmatrix}
+\end{align*}
+We evaluate the Wronskian to find
+\begin{align*}
+    W(y_1, y_2) &= \begin{vmatrix}
+    e^{2x} & e^{-2x} \\
+    2e^{2x} & -2e^{-2x}
+    \end{vmatrix} \\
+    &= -2e^{2x}e^{-2x} - 2e^{2x}e^{-2x} \\
+    &= -2(1)-2(1) \\
+    &= -4.
+\end{align*}
+Next we plug this, $y_2$, and $g(x)$ into equation (1) to find
+\begin{align*}
+u'_1(x) &= \frac{-e^{-2x}e^{2x}}{-4x} \\
+&= \frac{e^{0}}{4x} \\
+&= \frac{1}{4x}
+\end{align*}
+which we integrate, giving us
+\begin{align*}
+u_1(x) &= \frac{\ln{\lvert x \rvert}}{4}.
+\end{align*}
+This restricts our interval of validity to $(-\infty,0)$ or $(0,\infty)$.
+Next we plug the Wronskian, $y_1$, and $g(x)$ into equation (2) to find
+\begin{align*}
+u'_2(x) &= \frac{e^{2x}e^{2x}}{-4x} \\
+&= \frac{e^{4x}}{4x} \\
+\end{align*}
+which we integrate, giving us an integral without an elementary solution called the Exponential Integral in the form
+\begin{align*}
+u_2(x) &= \int_{x_0}^{x} \ \frac{-e^{4t}}{4t}  \,dt \\
+&= \frac{-Ei(4x)}{4}  
+\end{align*}
+where $x_0$ is any value in the interval of validity. Now that we have $u_1$ and $u_2$ we can solve for our particular solution
+\begin{align*}
+y_p(x) = \frac{\ln{\lvert x \rvert} e^{2x}}{4}+ \frac{-Ei(4x)e^{-2x}}{4}.
+\end{align*}
+We can now add our complementary solution and our particular solution to find our general solution
+\begin{align*}
+y(x) =  Ae^{2x}+Be^{-2x} + \frac{\ln{\lvert x \rvert} e^{2x}-Ei(4x)e^{-2x}}{4}.
+\end{align*}
+
+
+
+
+
+
+
+\vspace{0.5in}
+\hline
+\vspace{0.2in}
+6. Desiree's problem: Use the method of variation of parameters to find the general solution of
+\begin{align*}
+y'' - y' - 2y = 2e^{-x}
+\end{align*}
+\textbf{Solution:}
+\\ \\
+First, let's solve $y'' - y' - 2y = 0$.\\
+\noindent Characteristic Equation: $ r^2 - r -2y = 0$\\
+\noindent \quad \Rightarrow $$(r+1)(r-2)=0\\
+\noindent \Rightarrow \ $$r = -1, 2 \\ \\ 
+
+\noindent Now, we can find $y_1$\ and\ \mathrm $y_2$. 
+
+\noindent $y_1(x) = e^{-x} \ , \quad y_2(x) = e^{2x} $\\  \\ \\
+
+\noindent \mathrm We may now find the characteristic solution.\\ 
+$y_c(x) = C_1e^{-x} + C_2e^{2x} \\ \\ \\
+
+\noindent \mathrm We may now find the particular solution.\\ 
+$y_p(x) = u_1(x)e^{-x} + u_2(x)e^{2x}$ \\ \\ \\ 
+
+\noindent Now, we will find the Wronskian using \ $y_1, \  y_2, \  y_1', \
+\mathrm {and} \ y_2'.\\ \\
+$$W(y_1,y_2) = 
+\begin{vmatrix}
+     e^{-x} & e^{2x} \\
+    -e^{-x} & 2e^{2x} 
+    \end{vmatrix}
+= 2e^{x} - (-e^{x}) = 3e^x \\ \\ \\
+
+\noindent Let's find $ u_1'(x) \\ \\
+$$u_1'(x)= -\frac {y _2(x)g(x)}{W} = -\frac{e^{2x}(2e^{-x})}{3e^x} = -\frac{e^{x}(2e^{-x})}{3} = -\frac{2e^{0}}{3} = - \frac{2}{3}$$\\ \\ 
+
+\noindent Let's find $ u_1(x) \\
+$$u_1(x) = $ \int -\frac{2}{3} \mathrm{d}x \; = - \frac{2}{3}x + C , \quad \mathrm {set}\ C} = 0$$ \\ \\ \\
+
+\noindent Let's find $u_2'(x)\\ \\
+\noindent u_2'(x)= \frac {y _1(x)g(x)}{W} =  \frac{ e^{-x}2e^{-x}}{3e^x} = \frac{2e^{-x}}{3e^{2x}} = \frac{2}{3e^{3x}} = \frac{2}{3}e^{-3x} \\ \\
+$$u_2(x) = \frac{2}{3} $$\int e^{-3x} \mathrm{d}x \;, \quad \mathrm{Let's \ use \ u-substitution!} \qquad u= -3x \qquad \mathrm{d}u = -3 \mathrm{d}x \\
+u_2(x) =- \frac{2}{9}e^{-3x} + D, \quad \mathrm {set}\ D} = 0 \\ \\ 
+
+\noindent {Now, \ let's \ find \ $y(x)}. 
+
+\noindent $y(x) = y_p(x) + y_c(x) \\ \\
+     = [-\frac{2}{3}x(e^{-x}) - \frac{2}{9}e^{-3x}(e^{2x})] + [ C_1e^{-x} + C_2e^{2x}]\\ \\
+     = -\frac{2}{3}xe^{-x} - \frac{2}{9}e^{-x}$ + C_1e^{-x} + C_2e^{2x}
+
+
+
+\\\ \\
+
+
+
+\\ \\
+\hline 
+\vspace{0.2in}
+7. Jennifer's problem: Use the method of variation of parameters to find the general solution of
+\begin{align*}
+4y'' - 4y' + y = 16e^{x/2}
+\end{align*}
+\textbf{Solution:}
+\\ \\
+\hline 
+\vspace{0.2in}
+\end{document}
