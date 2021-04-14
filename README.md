@@ -1,13 +1,13 @@
 # Mathematics
 A general repository for all my work with mathematics:
 
-Advanced Mathematics:
+## Advanced Mathematics:
     Proofs using basic proof techniques in LaTex
 
-Difference Equations:
+## Difference Equations:
     Algorithms using python on Jupyter Notebooks
 
-Differential Equations:
+## Differential Equations:
     Research project on Difference Equations in Latex
     Various problem solutions in Latex
 
