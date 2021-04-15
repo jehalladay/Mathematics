@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools, amsthm}
+\title{How to Use Latex}
+\author{Math 260}
+\date{Spring 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Latex Basics}
+Let's practice with typing some basic math. When we want to type some math in line, we use dollar signs between the math. So, for example, to type the number e raised to the x power in the same line as the text, we can type $e^x$. (Look at code on left to see what I am typing into the Latex code to get this.) If we want this math to be displayed nicely on its own line, we can type $$e^x$$ with two dollar signs around the math. If we are using the package ``amsmath" (which I have included in this document -- see the preamble) we can also type
+\begin{align}
+    e^x
+\end{align}
+or
+\begin{align*}
+    e^x
+\end{align*}
+which has the advantage of being able to line up equations if needed.
+
+Note the environment ``\textbackslash begin\{align\}" and then ``\textbackslash end\{align\}" labels the math expression or equation that we type, whereas if we use ``\textbackslash begin\{align*\}" and then `` \textbackslash end\{align*\}", it displays the math but does not label the expression or equation we type. Here are some other examples of how to type mathematical expressions or equations:
+\begin{align*}
+    y = \frac{x^2}{x+1} + \ln(x^2+1) + \sin(x) + \cos(x)
+\end{align*}
+\begin{align*}
+    \frac{d^2 y}{dx^2} + 2 \frac{dy}{dx} = x^2
+\end{align*}
+\begin{align*}
+    W(y_1, y_2) = \begin{vmatrix}
+    y_1 & y_2 \\
+    y_1' & y_2'
+    \end{vmatrix}
+\end{align*}
+\begin{align*}
+    2x + 3y &= 2 \\
+    4x - 8y &= 3
+\end{align*}
+Note in the last example we aligned two equations using an ``\&" where we wanted the equations to line up and with two backslashes at the end of the first line. If we had wanted to label those two equations, we could type
+\begin{align}
+    2x + 3y &= 2 \label{eqn1} \\
+    4x - 8y &= 3 \label{eqn2}
+\end{align}
+using whatever label we wanted for each equation (here I chose ``eqn1" and ``eqn2"). We can then refer to these equations by typing ``\textbackslash eqref\{eqn1\}" which will look like: \eqref{eqn1}. So we could write something like, ``Let's multiply \eqref{eqn1} by $-2$ and add to \eqref{eqn2} to get the equation $0x -14y = -1$."
+
+Here is an example of how I might type up a solution to solving the initial value problem
+\begin{align*}
+    y'' + y = 0, \quad y(0) = 1, \quad y'(0) = -1
+\end{align*}
+\textbf{Solution:} \quad First we form the characteristic equation $r^2 + 1 = 0$. This implies that $r = \pm i$. Thus, the solution is in the form
+\begin{align*}
+    y(x) &= c_1 e^{ix} + c_2e^{-ix} = A \cos(x) + B \sin(x).
+\end{align*}
+Now note
+\begin{align*}
+    y(0) = 1 \quad \Rightarrow \quad A = 1.
+\end{align*}
+Next, note
+\begin{align*}
+    y'(x) = -A \sin(x) + B \cos(x).
+\end{align*}
+Thus, 
+\begin{align*}
+    y'(0) = -1 \quad \Rightarrow \quad B = -1.
+\end{align*}
+Thus, the solution is
+\begin{align*}
+    y(x) = \cos(x) - \sin(x). \qed
+\end{align*} 
+Here I used the symbol $\qed$ \quad just to indicate that I was finished with the solution. Note I also used ``\textbackslash quad" a lot, which provides a little bit of blank space. The command ``\textbackslash ;" provides a single space and is also used sometimes when you want a single space between two mathematical expressions (for example, I use it before the "dx" inside an integral all the time).
+
+Here is an example of how to type math that uses an integral:
+\begin{align*}
+    & \frac{dy}{dx} = 8x^3 - \sin(x) + e^x \\
+    \Rightarrow \quad & y(x) = \int \left(8x^3 - \sin(x) + e^x\right) \; dx = 2x^4 + \cos(x) + e^x
+\end{align*}
+We can also put limits on an integral like this:
+\begin{align*}
+    \int_a^b f(x) \; dx
+\end{align*}
+Some other useful tips about using Latex are that if you click enter twice, like this.
+
+\section{Try entering some stuff}
+You can try entering some stuff here, just for fun. You have to click "recompile" for the document to load with the new code.
+\newpage
+\section{Homework 6}
+In Homework 6, you will each be given a problem to write up here in this document using LaTeX. Write up your solution for your problem where indicated.
+
+
+
+
+\end{document}
